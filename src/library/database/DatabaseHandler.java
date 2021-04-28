@@ -29,7 +29,6 @@ public final class DatabaseHandler {
 
     private void setupBookTable() {
         String tableName = "BOOKS";
-        System.out.println("jfahsk");
 
         try {
             statement = connection.createStatement();
@@ -70,11 +69,8 @@ public final class DatabaseHandler {
         try {
             statement = connection.createStatement();
             statement.execute(query);
-            System.out.println("vjsnk");
             return true;
         } catch (SQLException e) {
-            System.out.println("jfahsk");
-
             System.out.println("Exception at execQuery: " + e.getLocalizedMessage());
             return false;
         }

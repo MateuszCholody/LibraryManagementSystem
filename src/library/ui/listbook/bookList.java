@@ -1,4 +1,4 @@
-package library.addBook.ui;
+package library.ui.listbook;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -6,11 +6,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Main extends Application {
+
+public class bookList extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("add_book_layout.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("book_list_layout.fxml"));
 
         Scene scene = new Scene(root);
 

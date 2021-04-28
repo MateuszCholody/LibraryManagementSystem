@@ -1,4 +1,4 @@
-package library.addBook.ui;
+package library.ui.addBook;
 
 import javafx.application.Application;
 import javafx.fxml.FXML;
@@ -13,6 +13,8 @@ import library.database.DatabaseHandler;
 
 import java.awt.event.ActionEvent;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class addBookController implements Initializable {
@@ -43,6 +45,8 @@ public class addBookController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         databaseHandler = new DatabaseHandler();
+
+        checkData();
     }
 
 
@@ -73,6 +77,7 @@ public class addBookController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Book added");
                 alert.show();
+                clearTextFields();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
@@ -82,8 +87,33 @@ public class addBookController implements Initializable {
         }
     }
 
-    public void cancel(javafx.event.ActionEvent actionEvent) {
+    public void reset(javafx.event.ActionEvent actionEvent) {
+        clearTextFields();
+    }
 
+    public void cancel(javafx.event.ActionEvent actionEvent) {
+        Stage stage = (Stage) rootPane.getScene().getWindow();
+        stage.close();
+    }
+
+    private void clearTextFields() {
+        id.clear();
+        title.clear();
+        author.clear();
+        publisher.clear();
+        isbn.clear();
+    }
+
+    private void checkData() {
+        String query = "SELECT title FROM BOOKS";
+        ResultSet resultSet = databaseHandler.execQuery(query);
+        try {
+            while (resultSet.next()) {
+                String titleDB = resultSet.getString("title");
+            }
+        } catch (SQLException e) {
+
+        }
     }
 
 

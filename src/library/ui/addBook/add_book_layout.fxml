@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 
 <StackPane fx:id="rootPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="library.addBook.ui.addBookController">
+           fx:controller="library.ui.addBook.addBookController">
     <children>
         <AnchorPane id="AnchorPane" fx:id="mainContainer" prefHeight="338.0" prefWidth="464.0" styleClass="custom-pane">
             <children>
@@ -41,7 +41,7 @@
                             <children>
                                 <Button fx:id="saveButton" onAction="#addBook" prefHeight="66.0" prefWidth="100.0"
                                         text="Save"/>
-                                <Button fx:id="cancelButton" layoutX="10.0" layoutY="10.0" onAction="#cancel"
+                                <Button fx:id="resetButton" layoutX="10.0" layoutY="10.0" onAction="#reset"
                                         prefHeight="66.0" prefWidth="100.0" text="Reset"/>
                                 <Button fx:id="cancelButton1" layoutX="242.0" layoutY="10.0" onAction="#cancel"
                                         prefHeight="66.0" prefWidth="100.0" text="Cancel"/>
