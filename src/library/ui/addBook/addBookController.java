@@ -45,8 +45,6 @@ public class addBookController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         databaseHandler = new DatabaseHandler();
-
-        checkData();
     }
 
 
@@ -103,18 +101,4 @@ public class addBookController implements Initializable {
         publisher.clear();
         isbn.clear();
     }
-
-    private void checkData() {
-        String query = "SELECT title FROM BOOKS";
-        ResultSet resultSet = databaseHandler.execQuery(query);
-        try {
-            while (resultSet.next()) {
-                String titleDB = resultSet.getString("title");
-            }
-        } catch (SQLException e) {
-
-        }
-    }
-
-
 }
