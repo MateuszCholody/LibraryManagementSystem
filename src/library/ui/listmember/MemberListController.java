@@ -45,7 +45,7 @@ public class MemberListController implements Initializable {
     }
 
     private void loadData() {
-        DatabaseHandler databaseHandler = new DatabaseHandler();
+        DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
 
 
         String query = "SELECT * FROM MEMBERS";

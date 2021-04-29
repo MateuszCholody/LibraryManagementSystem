@@ -4,7 +4,7 @@ import java.sql.*;
 
 public final class DatabaseHandler {
 
-    private DatabaseHandler handler;
+    private static DatabaseHandler handler = null;
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/library";
     private static final String DATABASE_PASS = "enudle12!";
@@ -13,10 +13,17 @@ public final class DatabaseHandler {
     private static Statement statement = null;
 
 
-    public DatabaseHandler() {
+    private DatabaseHandler() {
         createConnection();
         setupBookTable();
         setupMemberTable();
+    }
+
+    public static DatabaseHandler getInstance() {
+        if (handler == null) {
+            handler = new DatabaseHandler();
+        }
+        return handler;
     }
 
     private void createConnection() {
