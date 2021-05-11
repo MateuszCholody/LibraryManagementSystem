@@ -14,12 +14,17 @@ public class main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("main_layout.fxml"));
 
-        DatabaseHandler.getInstance();
-
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
         primaryStage.show();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DatabaseHandler.getInstance();
+            }
+        }).start();
     }
 
 

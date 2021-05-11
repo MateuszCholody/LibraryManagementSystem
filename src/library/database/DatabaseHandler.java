@@ -17,6 +17,7 @@ public final class DatabaseHandler {
         createConnection();
         setupBookTable();
         setupMemberTable();
+        setupIssueTable();
     }
 
     public static DatabaseHandler getInstance() {
@@ -55,6 +56,31 @@ public final class DatabaseHandler {
                         + "publisher varchar(100),\n"
                         + "isbn varchar(100), \n"
                         + "isAvailable boolean default true)");
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage() + " ... setupDatabase");
+        }
+    }
+
+    private void setupIssueTable() {
+        String tableName = "ISSUES";
+
+        try {
+            statement = connection.createStatement();
+
+            DatabaseMetaData databaseMetaData = connection.getMetaData();
+            ResultSet tables = databaseMetaData.getTables(null, null, tableName.toUpperCase(), null);
+
+            if (tables.next()) {
+                System.out.println("Table " + tableName + " already exists.");
+
+            } else {
+                statement.execute("CREATE TABLE " + tableName + "("
+                        + "id int primary key auto_increment, \n"
+                        + "issueTime timestamp default CURRENT_TIMESTAMP,\n"
+                        + "renewCount int default 0,\n"
+                        + "FOREIGN KEY (BookID) REFERENCES BOOKS(id),\n"
+                        + "FOREIGN KEY (MemberID) REFERENCES MEMBERS(id))");
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage() + " ... setupDatabase");

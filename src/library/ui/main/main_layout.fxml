@@ -52,7 +52,8 @@
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <VBox prefHeight="346.0" prefWidth="500.0">
                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                                    <TextField fx:id="bookIDField" alignment="CENTER" promptText="Book ID">
+                                    <TextField fx:id="bookIDField" alignment="CENTER" onAction="#loadBookInfo"
+                                               promptText="Book ID">
                                         <HBox.margin>
                                             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
                                         </HBox.margin>
@@ -87,7 +88,8 @@
                                 <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0"
                                       prefWidth="200.0">
                                     <children>
-                                        <TextField fx:id="memberIDField" alignment="CENTER" promptText="Memebr ID">
+                                        <TextField fx:id="memberIDField" alignment="CENTER" onAction="#loadMemberInfo"
+                                                   promptText="Member ID">
                                             <HBox.margin>
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
                                             </HBox.margin>
@@ -115,7 +117,8 @@
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                                     <children>
-                                        <Button mnemonicParsing="false" text="Issue"/>
+                                        <Button mnemonicParsing="false" onAction="#loadIssueBookOperation"
+                                                text="Issue"/>
                                     </children>
                                 </HBox>
                             </VBox>
