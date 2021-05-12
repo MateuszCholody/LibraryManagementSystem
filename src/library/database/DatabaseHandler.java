@@ -79,7 +79,9 @@ public final class DatabaseHandler {
                         + "id int primary key auto_increment, \n"
                         + "issueTime timestamp default CURRENT_TIMESTAMP,\n"
                         + "renewCount int default 0,\n"
-                        + "FOREIGN KEY (BookID) REFERENCES BOOKS(id),\n"
+                        + "BookID varchar(200),\n"
+                        + "FOREIGN KEY (BookID) REFERENCES books(id),\n"
+                        + "MemberID int,\n"
                         + "FOREIGN KEY (MemberID) REFERENCES MEMBERS(id))");
             }
         } catch (SQLException e) {
