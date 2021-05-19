@@ -127,46 +127,44 @@
                     <Tab text="Renew / Submission">
                         <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                <children>
-                                    <BorderPane prefHeight="346.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0"
-                                                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                                                AnchorPane.topAnchor="0.0">
-                                        <top>
-                                            <TextField fx:id="bookID" onAction="#loadIssuedBookInfo" prefHeight="25.0"
-                                                       prefWidth="225.0" promptText="Book ID"
-                                                       BorderPane.alignment="CENTER">
-                                                <BorderPane.margin>
-                                                    <Insets bottom="20.0" left="40.0" right="40.0" top="20.0"/>
-                                                </BorderPane.margin>
-                                            </TextField>
-                                        </top>
-                                        <center>
-                                            <ListView fx:id="issueList" prefHeight="200.0" prefWidth="200.0"
-                                                      BorderPane.alignment="CENTER">
-                                                <padding>
-                                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                                                </padding>
-                                            </ListView>
-                                        </center>
-                                        <bottom>
-                                            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
+                                <BorderPane prefHeight="346.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0"
+                                            AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                            AnchorPane.topAnchor="0.0">
+                                    <top>
+                                        <TextField fx:id="bookID" onAction="#loadIssuedBookInfo" prefHeight="25.0"
+                                                   prefWidth="225.0" promptText="Book ID" BorderPane.alignment="CENTER">
+                                            <BorderPane.margin>
+                                                <Insets bottom="20.0" left="40.0" right="40.0" top="20.0"/>
+                                            </BorderPane.margin>
+                                        </TextField>
+                                    </top>
+                                    <center>
+                                        <ListView fx:id="issueList" prefHeight="200.0" prefWidth="200.0"
                                                   BorderPane.alignment="CENTER">
-                                                <children>
-                                                    <Button mnemonicParsing="false" text="Renew">
-                                                        <HBox.margin>
-                                                            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
-                                                        </HBox.margin>
-                                                    </Button>
-                                                    <Button mnemonicParsing="false" text="Submission">
-                                                        <HBox.margin>
-                                                            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
-                                                        </HBox.margin>
-                                                    </Button>
-                                                </children>
-                                            </HBox>
-                                        </bottom>
-                                    </BorderPane>
-                                </children>
+                                            <padding>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                            </padding>
+                                        </ListView>
+                                    </center>
+                                    <bottom>
+                                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
+                                              BorderPane.alignment="CENTER">
+                                            <children>
+                                                <Button mnemonicParsing="false" text="Renew">
+                                                    <HBox.margin>
+                                                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+                                                    </HBox.margin>
+                                                </Button>
+                                                <Button mnemonicParsing="false" onAction="#loadSubmissionOperation"
+                                                        text="Submission">
+                                                    <HBox.margin>
+                                                        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
+                                                    </HBox.margin>
+                                                </Button>
+                                            </children>
+                                        </HBox>
+                                    </bottom>
+                                </BorderPane>
                             </AnchorPane>
                         </content>
                     </Tab>

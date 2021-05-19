@@ -47,6 +47,8 @@ public class MainController implements Initializable {
     public TextField bookID;
     public ListView issueList;
 
+    boolean isReadyForSubmission = false;
+
     DatabaseHandler handler;
 
     @Override
@@ -175,6 +177,8 @@ public class MainController implements Initializable {
 
     public void loadIssuedBookInfo(ActionEvent actionEvent) {
         ObservableList<String> issueListData = FXCollections.observableArrayList();
+        isReadyForSubmission = false;
+
         String mbookID = bookID.getText();
         String query = "SELECT * FROM ISSUES WHERE ID + '" + Integer.parseInt(mbookID) + "'";
         ResultSet resultSet = handler.execQuery(query);
@@ -193,27 +197,65 @@ public class MainController implements Initializable {
                 ResultSet issueResultSet = handler.execQuery(query);
                 issueListData.add("Book Information: ");
                 while (issueResultSet.next()) {
-                    issueListData.add("Book Title: " + issueResultSet.getString("title"));
-                    issueListData.add("Book ISBN: " + issueResultSet.getString("ISBN"));
-                    issueListData.add("Book Author: " + issueResultSet.getString("author"));
-                    issueListData.add("Book Publisher: " + issueResultSet.getString("publisher"));
-                    issueListData.add("Book ID: " + issueResultSet.getString("id"));
+                    issueListData.add("\tBook Title: " + issueResultSet.getString("title"));
+                    issueListData.add("\tBook ISBN: " + issueResultSet.getString("ISBN"));
+                    issueListData.add("\tBook Author: " + issueResultSet.getString("author"));
+                    issueListData.add("\tBook Publisher: " + issueResultSet.getString("publisher"));
+                    issueListData.add("\tBook ID: " + issueResultSet.getString("id"));
                 }
 
                 query = "SELECT * FROM MEMBERS WHERE ID = '" + mMemberID + "'";
                 issueResultSet = handler.execQuery(query);
                 issueListData.add("Member Information: ");
                 while (issueResultSet.next()) {
-                    issueListData.add("Member Name: " + issueResultSet.getString("name") + " " + issueResultSet.getString("surname"));
-                    issueListData.add("Member Phone Number: " + issueResultSet.getString("phoneNumber"));
-                    issueListData.add("Member id: " + issueResultSet.getString("id"));
+                    issueListData.add("\tMember Name: " + issueResultSet.getString("name") + " " + issueResultSet.getString("surname"));
+                    issueListData.add("\tMember Phone Number: " + issueResultSet.getString("phoneNumber"));
+                    issueListData.add("\tMember id: " + issueResultSet.getString("id"));
                 }
+                isReadyForSubmission = true;
+                break;
             }
         } catch (SQLException e) {
             System.out.println(123);
 
         }
         issueList.getItems().setAll(issueListData);
+    }
 
+
+    public void loadSubmissionOperation(ActionEvent actionEvent) {
+        if (!isReadyForSubmission) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Failure");
+            alert.setHeaderText(null);
+            alert.setContentText("Select book to submit");
+            return;
+        }
+        String id = bookID.getText();
+        String deleteAction = "DELETE FROM ISSUES BOOKID = '" + id + "'";
+        String updateAction = "UPDATE BOOKS SET ISAVAILABLE = TRUE WHERE ID = '" + id + "'";
+
+        if (handler.execAction(deleteAction) && handler.execAction(updateAction)) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Success");
+            alert.setHeaderText(null);
+            alert.setContentText("Book has been submitted correctly");
+            alert.showAndWait();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Failure");
+            alert.setHeaderText(null);
+            alert.setContentText("Book submission has failed");
+        } else{
+            Alert alert = new Alert(Alert.AlertType.)
+        }
+
+        else{
+            Alert alertFailed = new Alert(Alert.AlertType.INFORMATION);
+            alertFailed.setTitle("Issue Canceled");
+            alertFailed.setHeaderText(null);
+            alertFailed.setContentText(bookTitle.getText() + " issue canceled");
+            alertFailed.showAndWait();
+        }
     }
 }
