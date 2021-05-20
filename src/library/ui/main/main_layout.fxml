@@ -42,6 +42,10 @@
                                 prefHeight="53.0" prefWidth="114.0" text="Member List"/>
                         <Button layoutX="10.0" layoutY="116.0" mnemonicParsing="false" onAction="#loadBookList"
                                 prefHeight="53.0" prefWidth="114.0" text="Book List"/>
+                        <Button layoutX="10.0" layoutY="169.0" mnemonicParsing="false" onAction="#loadIssueList"
+                                prefHeight="53.0" prefWidth="114.0" text="Issue List"/>
+                        <Button layoutX="10.0" layoutY="169.0" mnemonicParsing="false" onAction="#loadSettings"
+                                prefHeight="53.0" prefWidth="114.0" text="Settings"/>
                     </children>
                 </VBox>
             </right>
@@ -150,7 +154,8 @@
                                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0"
                                               BorderPane.alignment="CENTER">
                                             <children>
-                                                <Button mnemonicParsing="false" text="Renew">
+                                                <Button mnemonicParsing="false" onAction="#loadRenewOperation"
+                                                        text="Renew">
                                                     <HBox.margin>
                                                         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
                                                     </HBox.margin>

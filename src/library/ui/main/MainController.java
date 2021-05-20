@@ -232,8 +232,8 @@ public class MainController implements Initializable {
             return;
         }
         String id = bookID.getText();
-        String deleteAction = "DELETE FROM ISSUES BOOKID = '" + id + "'";
-        String updateAction = "UPDATE BOOKS SET ISAVAILABLE = TRUE WHERE ID = '" + id + "'";
+        String deleteAction = "DELETE FROM ISSUES WHERE bookID = '" + id + "'";
+        String updateAction = "UPDATE BOOKS SET isAVAILABLE = TRUE WHERE id = '" + id + "'";
 
         if (handler.execAction(deleteAction) && handler.execAction(updateAction)) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -246,16 +246,52 @@ public class MainController implements Initializable {
             alert.setTitle("Failure");
             alert.setHeaderText(null);
             alert.setContentText("Book submission has failed");
-        } else{
-            Alert alert = new Alert(Alert.AlertType.)
         }
-
+        /*
         else{
             Alert alertFailed = new Alert(Alert.AlertType.INFORMATION);
             alertFailed.setTitle("Issue Canceled");
             alertFailed.setHeaderText(null);
             alertFailed.setContentText(bookTitle.getText() + " issue canceled");
             alertFailed.showAndWait();
+        }*/
+    }
+
+    public void loadRenewOperation(ActionEvent actionEvent) {
+        if (!isReadyForSubmission) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Failure");
+            alert.setHeaderText(null);
+            alert.setContentText("Select book to renew");
+            return;
         }
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirm Renew Operation");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to renew this book?");
+
+        Optional<ButtonType> response = alert.showAndWait();
+        if (response.get() == ButtonType.OK) {
+            String renewAction = "UPDATE ISSUES SET issueTime = CURRENT_TIMESTAMP, renewCount = renewCount + 1 WHERE bookID = '" + bookID.getText() + "'";
+            if (handler.execAction(renewAction)) {
+                Alert alert1 = new Alert(Alert.AlertType.INFORMATION);
+                alert1.setTitle("Success");
+                alert1.setHeaderText(null);
+                alert1.setContentText("Book has been renewed correctly");
+                alert1.showAndWait();
+            } else {
+                Alert alert1 = new Alert(Alert.AlertType.ERROR);
+                alert1.setTitle("Failure");
+                alert1.setHeaderText(null);
+                alert1.setContentText("Book renew has failed");
+            }
+        }
+    }
+
+    public void loadIssueList(ActionEvent actionEvent) {
+    }
+
+    public void loadSettings(ActionEvent actionEvent) {
     }
 }
