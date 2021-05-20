@@ -35,7 +35,7 @@
                         <Insets right="10.0"/>
                      </padding>
                   </TextField>
-                  <TextField fx:id="databaseAdress" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <TextField fx:id="databaseAddress" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <padding>
                         <Insets right="10.0"/>
                      </padding>
@@ -76,7 +76,7 @@
                            </VBox.margin>
                         </Text>
                         <Text fill="#434242" layoutX="20.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="All data will be ereased">
+                              text="All data will be erased">
                            <font>
                               <Font name="System Italic" size="10.0"/>
                            </font>
@@ -92,7 +92,7 @@
                         <Insets right="10.0"/>
                      </padding>
                   </TextField>
-                  <TextField fx:id="lendTime1" layoutX="210.0" layoutY="18.0" GridPane.columnIndex="1"
+                  <TextField fx:id="userName" layoutX="210.0" layoutY="18.0" GridPane.columnIndex="1"
                              GridPane.rowIndex="3">
                      <padding>
                         <Insets right="10.0"/>
