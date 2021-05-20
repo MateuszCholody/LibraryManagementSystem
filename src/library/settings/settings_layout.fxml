@@ -22,14 +22,15 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
                </rowConstraints>
                <children>
-                  <PasswordField fx:id="databasePassword" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <PasswordField fx:id="databasePassword" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <padding>
                         <Insets right="10.0"/>
                      </padding>
                   </PasswordField>
-                  <TextField fx:id="lendTime" GridPane.columnIndex="1">
+                  <TextField fx:id="lendTime" prefWidth="187.0" GridPane.columnIndex="1">
                      <padding>
                         <Insets right="10.0"/>
                      </padding>
@@ -57,17 +58,17 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database adress" GridPane.rowIndex="2">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database address" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                      </GridPane.margin>
                   </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database password" GridPane.rowIndex="3">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database password" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                      </GridPane.margin>
                   </Text>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="4">
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reset databese">
                            <VBox.margin>
@@ -86,11 +87,23 @@
                      </children>
                   </VBox>
                   <TextField fx:id="resetField" layoutX="208.0" layoutY="17.0" promptText="Type &quot;RESET&quot;"
-                             GridPane.columnIndex="1" GridPane.rowIndex="4">
+                             GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <padding>
                         <Insets right="10.0"/>
                      </padding>
                   </TextField>
+                  <TextField fx:id="lendTime1" layoutX="210.0" layoutY="18.0" GridPane.columnIndex="1"
+                             GridPane.rowIndex="3">
+                     <padding>
+                        <Insets right="10.0"/>
+                     </padding>
+                  </TextField>
+                  <Text layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database user name"
+                        GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                     </GridPane.margin>
+                  </Text>
                </children>
                <opaqueInsets>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
