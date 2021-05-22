@@ -293,5 +293,7 @@ public class MainController implements Initializable {
     }
 
     public void loadSettings(ActionEvent actionEvent) {
+        loadWindow("/library/settings/settings_layout.fxml", "Settings");
+
     }
 }

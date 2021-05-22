@@ -1,6 +1,7 @@
 package library.settings;
 
 import com.google.gson.Gson;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -48,7 +49,7 @@ public class Preferences {
     }
 
     public void setDatabasePassword(String databasePassword) {
-        this.databasePassword = databasePassword;
+        this.databasePassword = DigestUtils.sha1Hex(databasePassword);
     }
 
     public String getDatabaseUserName() {
@@ -87,5 +88,22 @@ public class Preferences {
             e.printStackTrace();
         }
         return preferences;
+    }
+
+    public static void writePreferences(Preferences preferences) {
+        Writer writer = null;
+        try {
+            Gson gson = new Gson();
+            writer = new FileWriter(CONFIG_FILE);
+            gson.toJson(preferences, writer);
+        } catch (IOException e) {
+
+        } finally {
+            try {
+                writer.close();
+            } catch (IOException e) {
+
+            }
+        }
     }
 }
