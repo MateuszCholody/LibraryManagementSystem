@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -28,8 +25,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
-    @FXML
-    public StackPane rootView;
+
     @FXML
     public TextField bookIDField;
     @FXML
@@ -46,8 +42,11 @@ public class MainController implements Initializable {
     public Text memberPhoneNumber;
     public TextField bookID;
     public ListView issueList;
+    public StackPane rootPane;
+    public MenuItem screenSize;
 
     boolean isReadyForSubmission = false;
+    boolean isFullScreen = false;
 
     DatabaseHandler handler;
 
@@ -295,5 +294,30 @@ public class MainController implements Initializable {
     public void loadSettings(ActionEvent actionEvent) {
         loadWindow("/library/settings/settings_layout.fxml", "Settings");
 
+    }
+
+    public void handleLogoutAction(ActionEvent actionEvent) {
+        loadWindow("/library/ui/login/login_layout.fxml", "Login");
+        ((Stage) rootPane.getScene().getWindow()).close();
+    }
+
+    public void handleCloseAction(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+    public void handleStageSize(ActionEvent actionEvent) {
+        Stage stage = ((Stage) rootPane.getScene().getWindow());
+        if (isFullScreen) {
+            screenSize.setText("");
+            stage.setFullScreen(false);
+            isFullScreen = false;
+        } else {
+            screenSize.setText("Window view");
+            stage.setFullScreen(true);
+            isFullScreen = true;
+        }
+    }
+
+    public void handleAboutAction(ActionEvent actionEvent) {
     }
 }
