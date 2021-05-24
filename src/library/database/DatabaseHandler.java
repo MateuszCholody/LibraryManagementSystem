@@ -29,7 +29,6 @@ public final class DatabaseHandler {
 
     private void createConnection() {
         try {
-            //Class.forName().newInstance();
             connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USER, DATABASE_PASS);
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,7 +49,7 @@ public final class DatabaseHandler {
 
             } else {
                 statement.execute("CREATE TABLE " + tableName + "("
-                        + "id varchar(200) primary key, \n"
+                        + "id int primary key auto_increment, \n"
                         + "title varchar(200),\n"
                         + "author varchar(200),\n"
                         + "publisher varchar(100),\n"
@@ -79,9 +78,10 @@ public final class DatabaseHandler {
                         + "id int primary key auto_increment, \n"
                         + "issueTime timestamp default CURRENT_TIMESTAMP,\n"
                         + "renewCount int default 0,\n"
-                        + "BookID varchar(200),\n"
+                        + "BookID int,\n"
                         + "FOREIGN KEY (BookID) REFERENCES books(id),\n"
                         + "MemberID int,\n"
+                        + "isReturned boolean default false, \n"
                         + "FOREIGN KEY (MemberID) REFERENCES MEMBERS(id))");
             }
         } catch (SQLException e) {

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootPane" prefHeight="324.0" prefWidth="496.0" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.ui.login.LoginController">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="122.0" prefWidth="502.0" text="Library Management System&#10;Login"
+                   textAlignment="CENTER">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+               </padding>
+               <font>
+                  <Font size="37.0"/>
+               </font>
+            </Label>
+            <GridPane alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="251.0" minWidth="10.0" prefWidth="150.0"/>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="306.0" minWidth="10.0" prefWidth="306.0"/>
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+               </rowConstraints>
+               <children>
+                  <TextField fx:id="userName" prefWidth="283.0" GridPane.columnIndex="1">
+                     <padding>
+                        <Insets left="15.0" right="15.0"/>
+                     </padding>
+                  </TextField>
+                  <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <padding>
+                        <Insets left="15.0" right="15.0"/>
+                     </padding>
+                  </PasswordField>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="260.0" text="Name">
+                     <font>
+                        <Font size="18.0"/>
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="257.0" text="Password" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0"/>
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1"
+                        GridPane.rowIndex="2">
+                     <children>
+                        <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false"
+                                onAction="#handleLoginAction" text="Login" textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0"/>
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0"/>
+                           </HBox.margin>
+                        </Button>
+                        <Button alignment="CENTER" cancelButton="true" layoutX="10.0" layoutY="10.0"
+                                mnemonicParsing="false" onAction="#handleCancelAction" text="Cancel"
+                                textAlignment="CENTER">
+                           <font>
+                              <Font size="14.0"/>
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0"/>
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <GridPane.margin>
+                        <Insets left="20.0" right="20.0"/>
+                     </GridPane.margin>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+               </padding>
+            </GridPane>
+            <Label fx:id="wrongCredentialsAlert" alignment="CENTER" prefHeight="54.0" prefWidth="496.0"
+                   text="Wrong user or password&#10;Please type correct data" textFill="RED" visible="false"/>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
