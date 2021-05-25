@@ -6,6 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.apache.commons.codec.digest.DigestUtils;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,14 +32,13 @@ public class SettingsController implements Initializable {
 
     public void handleApplyButtonAction(ActionEvent actionEvent) {
         if (resetField.getText().equalsIgnoreCase("RESET")) {
-
+            //TODO
         }
         Preferences preferences = Preferences.getPreferences();
         preferences.setDatabaseAddress(databaseAddress.getText());
-        preferences.setDatabasePassword(databasePassword.getText());
+        preferences.addNewUser(userName.getText(), DigestUtils.sha1Hex(databasePassword.getText()));
         preferences.setLendTime(Integer.parseInt(lendTime.getText()));
         preferences.setRenewalsNumber(Integer.parseInt(renewalsNumber.getText()));
-        preferences.setDatabaseUserName(userName.getText());
 
         Preferences.writePreferences(preferences);
     }
@@ -52,7 +52,6 @@ public class SettingsController implements Initializable {
         Preferences preferences = Preferences.getPreferences();
         lendTime.setText(String.valueOf(preferences.getLendTime()));
         renewalsNumber.setText(String.valueOf(preferences.getRenewalsNumber()));
-        userName.setText(String.valueOf(preferences.getDatabaseUserName()));
         databaseAddress.setText(String.valueOf(preferences.getDatabaseAddress()));
 
 

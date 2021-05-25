@@ -7,134 +7,124 @@
 
 <AnchorPane fx:id="rootPane" prefHeight="308.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.settings.SettingsController">
-   <children>
-      <VBox prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-            AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <GridPane prefHeight="189.0" prefWidth="400.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0"/>
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
-               </rowConstraints>
-               <children>
-                  <PasswordField fx:id="databasePassword" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                     <padding>
-                        <Insets right="10.0"/>
-                     </padding>
-                  </PasswordField>
-                  <TextField fx:id="lendTime" prefWidth="187.0" GridPane.columnIndex="1">
-                     <padding>
-                        <Insets right="10.0"/>
-                     </padding>
-                  </TextField>
-                  <TextField fx:id="databaseAddress" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                     <padding>
-                        <Insets right="10.0"/>
-                     </padding>
-                  </TextField>
-                  <TextField fx:id="renewalsNumber" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets/>
-                     </GridPane.margin>
-                     <padding>
-                        <Insets right="10.0"/>
-                     </padding>
-                  </TextField>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Max book lend time in days">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                     </GridPane.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Max number of book renewals" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                     </GridPane.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database address" GridPane.rowIndex="2">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                     </GridPane.margin>
-                  </Text>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database password" GridPane.rowIndex="4">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                     </GridPane.margin>
-                  </Text>
-                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reset databese">
-                           <VBox.margin>
-                              <Insets left="10.0" right="10.0" top="10.0"/>
-                           </VBox.margin>
-                        </Text>
-                        <Text fill="#434242" layoutX="20.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="All data will be erased">
-                           <font>
-                              <Font name="System Italic" size="10.0"/>
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" left="10.0" right="10.0"/>
-                           </VBox.margin>
-                        </Text>
-                     </children>
-                  </VBox>
-                  <TextField fx:id="resetField" layoutX="208.0" layoutY="17.0" promptText="Type &quot;RESET&quot;"
-                             GridPane.columnIndex="1" GridPane.rowIndex="5">
-                     <padding>
-                        <Insets right="10.0"/>
-                     </padding>
-                  </TextField>
-                  <TextField fx:id="userName" layoutX="210.0" layoutY="18.0" GridPane.columnIndex="1"
-                             GridPane.rowIndex="3">
-                     <padding>
-                        <Insets right="10.0"/>
-                     </padding>
-                  </TextField>
-                  <Text layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database user name"
-                        GridPane.rowIndex="3">
-                     <GridPane.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                     </GridPane.margin>
-                  </Text>
-               </children>
-               <opaqueInsets>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-               </opaqueInsets>
+   <VBox prefHeight="400.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+         AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane prefHeight="189.0" prefWidth="400.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="80.0"/>
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+         </rowConstraints>
+         <opaqueInsets>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+         </VBox.margin>
+         <PasswordField fx:id="databasePassword" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <padding>
+               <Insets right="10.0"/>
+            </padding>
+         </PasswordField>
+         <TextField fx:id="lendTime" prefWidth="187.0" GridPane.columnIndex="1">
+            <padding>
+               <Insets right="10.0"/>
+            </padding>
+         </TextField>
+         <TextField fx:id="databaseAddress" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <padding>
+               <Insets right="10.0"/>
+            </padding>
+         </TextField>
+         <TextField fx:id="renewalsNumber" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <GridPane.margin>
+               <Insets/>
+            </GridPane.margin>
+            <padding>
+               <Insets right="10.0"/>
+            </padding>
+         </TextField>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Max book lend time in days">
+            <GridPane.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </GridPane.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Max number of book renewals" GridPane.rowIndex="1">
+            <GridPane.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </GridPane.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database host" GridPane.rowIndex="2">
+            <GridPane.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </GridPane.margin>
+         </Text>
+         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Database name" GridPane.rowIndex="4">
+            <GridPane.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </GridPane.margin>
+         </Text>
+         <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reset databese">
                <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                  <Insets left="10.0" right="10.0" top="10.0"/>
                </VBox.margin>
-            </GridPane>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button defaultButton="true" mnemonicParsing="false" onAction="#handleTestConnectionButtonAction"
-                          text="Test database connection">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                     </HBox.margin>
-                  </Button>
-                  <Button layoutX="182.0" layoutY="44.0" mnemonicParsing="false" onAction="#handleApplyButtonAction"
-                          text="Apply">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                     </HBox.margin>
-                  </Button>
-                  <Button cancelButton="true" layoutX="154.0" layoutY="44.0" mnemonicParsing="false"
-                          onAction="#handleCancelButtonAction" text="Cancel">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                     </HBox.margin>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+            </Text>
+            <Text fill="#434242" layoutX="20.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                  text="All data will be erased">
+               <font>
+                  <Font name="System Italic" size="10.0"/>
+               </font>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0"/>
+               </VBox.margin>
+            </Text>
+         </VBox>
+         <TextField fx:id="resetField" layoutX="208.0" layoutY="17.0" promptText="Type &quot;RESET&quot;"
+                    GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <padding>
+               <Insets right="10.0"/>
+            </padding>
+         </TextField>
+         <TextField fx:id="userName" layoutX="210.0" layoutY="18.0" GridPane.columnIndex="1"
+                    GridPane.rowIndex="3">
+            <padding>
+               <Insets right="10.0"/>
+            </padding>
+         </TextField>
+         <Text layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Database port"
+               GridPane.rowIndex="3">
+            <GridPane.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </GridPane.margin>
+         </Text>
+      </GridPane>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <Button defaultButton="true" mnemonicParsing="false" onAction="#handleTestConnectionButtonAction"
+                 text="Test database connection">
+            <HBox.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </HBox.margin>
+         </Button>
+         <Button layoutX="182.0" layoutY="44.0" mnemonicParsing="false" onAction="#handleApplyButtonAction"
+                 text="Apply">
+            <HBox.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </HBox.margin>
+         </Button>
+         <Button cancelButton="true" layoutX="154.0" layoutY="44.0" mnemonicParsing="false"
+                 onAction="#handleCancelButtonAction" text="Cancel">
+            <HBox.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+            </HBox.margin>
+         </Button>
+      </HBox>
+   </VBox>
 </AnchorPane>
