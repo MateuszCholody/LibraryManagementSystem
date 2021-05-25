@@ -1,16 +1,18 @@
 package library.database;
 
+import library.settings.Preferences;
+
 import java.sql.*;
 
 public final class DatabaseHandler {
 
     private static DatabaseHandler handler = null;
 
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/library";
-    private static final String DATABASE_PASS = "enudle12!";
-    private static final String DATABASE_USER = "root";
+    private static String pass;
+    private static String user;
     private static Connection connection = null;
     private static Statement statement = null;
+    private static Grants grants;
 
 
     private DatabaseHandler() {
@@ -18,6 +20,34 @@ public final class DatabaseHandler {
         setupBookTable();
         setupMemberTable();
         setupIssueTable();
+        setGrants();
+    }
+
+    private void setGrants() {
+        try {
+            statement = connection.createStatement();
+            DatabaseMetaData databaseMetaData = connection.getMetaData();
+            String user = databaseMetaData.getUserName().toUpperCase();
+            switch (user) {
+                case "ADMIN":
+                    grants = Grants.ADMIN;
+                    break;
+                case "MANAGER":
+                    grants = Grants.MANAGER;
+                    break;
+                case "LIBRARIAN":
+                    grants = Grants.LIBRARIAN;
+                default:
+                    grants = Grants.NON;
+            }
+
+        } catch (SQLException e) {
+            System.err.println(e.getMessage() + " ... setupDatabase");
+        }
+    }
+
+    public static Grants getGrants() {
+        return grants;
     }
 
     public static DatabaseHandler getInstance() {
@@ -27,9 +57,17 @@ public final class DatabaseHandler {
         return handler;
     }
 
+    public static DatabaseHandler getInstance(String userName, String password) {
+        user = userName;
+        pass = password;
+        return getInstance();
+    }
+
     private void createConnection() {
         try {
-            connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USER, DATABASE_PASS);
+            connection = DriverManager.getConnection("jdbc:mysql://".concat(Preferences.getPreferences().
+                    getDatabaseAddress()).concat(":").concat(Preferences.getPreferences().getDatabasePort()).
+                    concat("/").concat(Preferences.getPreferences().getDatabaseName()), user, pass);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -74,15 +112,13 @@ public final class DatabaseHandler {
                 System.out.println("Table " + tableName + " already exists.");
 
             } else {
-                statement.execute("CREATE TABLE " + tableName + "("
-                        + "id int primary key auto_increment, \n"
-                        + "issueTime timestamp default CURRENT_TIMESTAMP,\n"
-                        + "renewCount int default 0,\n"
-                        + "BookID int,\n"
-                        + "FOREIGN KEY (BookID) REFERENCES books(id),\n"
-                        + "MemberID int,\n"
-                        + "isReturned boolean default false, \n"
-                        + "FOREIGN KEY (MemberID) REFERENCES MEMBERS(id))");
+                statement.execute("CREATE TABLE " + tableName + "(" +
+                        "id int primary key auto_increment, \n" +
+                        "issueTime timestamp default CURRENT_TIMESTAMP,\n" +
+                        "renewCount int default 0,\n" + "BookID int,\n" +
+                        "FOREIGN KEY (BookID) REFERENCES books(id),\n" +
+                        "MemberID int,\n" + "isReturned boolean default false, \n" +
+                        "FOREIGN KEY (MemberID) REFERENCES MEMBERS(id))");
             }
         } catch (SQLException e) {
             System.err.println(e.getMessage() + " ... setupDatabase");
