@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import library.database.DatabaseHandler;
 import library.settings.Preferences;
 import library.ui.main.MainController;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -19,6 +20,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import java.io.IOException;
 import java.lang.ref.PhantomReference;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
@@ -38,8 +40,9 @@ public class LoginController implements Initializable {
         String name = userName.getText();
         String pass = DigestUtils.sha1Hex(password.getText());
 
-        if (name.equals(preferences.getDatabaseUserName()) && pass.equals(preferences.getDatabasePassword())) {
+        if (preferences.checkUser(name, pass)) {
             wrongCredentialsAlert.setVisible(false);
+            DatabaseHandler.getInstance(name, password.getText());
             closeStage();
             loadMain();
         } else {
@@ -57,14 +60,14 @@ public class LoginController implements Initializable {
 
     private void loadMain() {
         try {
-            Parent parent = FXMLLoader.load(getClass().getResource("/library/ui/main/main_layout.fxml"));
+            Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/library/ui/main/main_layout.fxml")));
 
             Stage stage = new Stage(StageStyle.DECORATED);
             stage.setTitle("Library Management System");
             stage.setScene(new Scene(parent));
             stage.show();
         } catch (IOException e) {
-
+            e.printStackTrace();
         }
     }
 }

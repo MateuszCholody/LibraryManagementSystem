@@ -6,26 +6,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import library.database.DatabaseHandler;
+
+import java.util.Objects;
 
 public class login extends Application {
 
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("login_layout.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login_layout.fxml")));
 
         Scene scene = new Scene(root);
 
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                DatabaseHandler.getInstance();
-            }
-        }).start();
     }
 
 
