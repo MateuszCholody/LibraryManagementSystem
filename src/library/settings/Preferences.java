@@ -7,17 +7,17 @@ import java.io.*;
 import java.lang.reflect.Type;
 
 public class Preferences {
-    public static final String CONFIG_FILE = "config.txt";
+    public static final String CONFIG_FILE = "config";
 
     private int lendTime, renewalsNumber;
-    private String databaseAddress, databasePassword, databaseUserName;
+    private String databaseAddress, databasePort, databaseName;
 
     public Preferences() {
         lendTime = 30;
         renewalsNumber = 2;
-        databaseAddress = "jdbc:mysql://localhost:3306/library";
-        databaseUserName = "root";
-        databasePassword = "enudle12!";
+        databaseAddress = "localhost";
+        databasePort = "3306";
+        databaseName = "library";
     }
 
     public int getLendTime() {
@@ -44,20 +44,20 @@ public class Preferences {
         this.databaseAddress = databaseAddress;
     }
 
-    public String getDatabasePassword() {
-        return databasePassword;
+    public String getDatabasePort() {
+        return databasePort;
     }
 
-    public void setDatabasePassword(String databasePassword) {
-        this.databasePassword = DigestUtils.sha1Hex(databasePassword);
+    public void setDatabasePort(String databasePort) {
+        this.databasePort = databasePort;
     }
 
-    public String getDatabaseUserName() {
-        return databaseUserName;
+    public String getDatabaseName() {
+        return databaseName;
     }
 
-    public void setDatabaseUserName(String databaseUserName) {
-        this.databaseUserName = databaseUserName;
+    public void setDatabaseName(String databaseName) {
+        this.databaseName = databaseName;
     }
 
     public static void initConfig() {
